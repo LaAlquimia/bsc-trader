@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightweight Charts Example</title>
+  <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+    #chart {
+      width: 800px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script>
+    async function fetchChartData() {
+      try {
+        const response = await fetch('/data');
+        if (!response.ok) {
+          throw new Error(`Error al obtener datos: ${response.status}`);
+        }
+        const rawdata = await response.json();
+        console.log(rawdata);
+        
+        const data = [];
+        for (let i = 0; i < rawdata[0].length; i++) {
+          // console.log(rawdata[5][i]);
+          
+          data.push({
+            time: rawdata[1][i],  // Asegúrate de que el tiempo esté en formato UNIX timestamp
+            open: rawdata[0][i],
+            close: rawdata[2][i],
+            high: rawdata[3][i],
+            low: rawdata[4][i],
+            volume: rawdata[5][i],
+            mean : rawdata[6][i]
+          });
+        }
+
+        return data;
+      } catch (error) {
+        console.error("Error al cargar los datos del gráfico:", error);
+        return [];
+      }
+    }
+
+    async function renderChart() {
+      const chartData = await fetchChartData();
+      const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+        width: 800,
+        height: 400,
+        layout: {
+          backgroundColor: '#ffffff',
+          textColor: '#000',
+        },
+        grid: {
+          vertLines: {
+            color: '#f0f3fa',
+          },
+          horzLines: {
+            color: '#f0f3fa',
+          },
+        },
+        crosshair: {
+          mode: LightweightCharts.CrosshairMode.Normal,
+        },
+        rightPriceScale: {
+          borderColor: '#d1d4dc',
+        },
+        timeScale: {
+          borderColor: '#d1d4dc',
+          timeVisible: true,
+        },
+
+      });
+
+      // Cambiar la serie de línea a velas
+      const candlestickSeries = chart.addCandlestickSeries(
+        {
+          priceFormat: {
+            minMove: 0.00001,
+            precision: 5
+            },
+          }
+      );
+      const lineSeries = chart.addLineSeries();
+      const linedata = chartData.map(data => ({
+        time: data.time,
+        value: data.mean,
+      }));
+      lineSeries.setData(linedata);
+
+      candlestickSeries.setData(chartData);
+      chart.timeScale().fitContent();
+    }
+
+    renderChart();
+  
+  </script>
+</body>
+</html>

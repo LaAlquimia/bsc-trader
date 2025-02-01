@@ -1,0 +1,22 @@
+{
+  "name": "bsctrader",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@paraswap/sdk": "^7.2.3",
+    "alchemy-sdk": "^3.5.1",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "node-fetch": "^3.3.2"
+  }
+}
