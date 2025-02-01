@@ -22,13 +22,15 @@ Antes de instalar y utilizar BSC Trader, asegúrate de tener lo siguiente:
 Sigue estos pasos para instalar y configurar BSC Trader:
 
 1. Clona el repositorio:
-
+    ``` bash
    git clone https://github.com/LaAlquimia/bsc-trader.git
-   cd bsc-trader
+
+   cd bsc-trader ```
 
 2. Instala las dependencias:
-
+    ``` bash
    npm install
+   ```
 
 3. Configura las variables de entorno:
 
@@ -43,9 +45,9 @@ Sigue estos pasos para instalar y configurar BSC Trader:
 ## Uso
 
 Para iniciar el bot, ejecuta el siguiente comando:
-
+   ``` bash
    npm start
-
+```
 El bot comenzará a monitorear el mercado y ejecutará operaciones según la estrategia definida.
 
 ## Personalización de Estrategias
