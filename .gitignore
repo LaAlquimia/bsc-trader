@@ -176,3 +176,6 @@ dist
 
 # bun lockb
 bun.lockb
+
+# wallet file 
+wallet.json
