@@ -6,8 +6,6 @@ BSC Trader es un bot de trading automatizado diseñado para operar en intercambi
 
 - Automatización: Ejecuta operaciones de compra y venta sin intervención manual.
 - Estrategias Personalizables: Permite la implementación de diferentes estrategias de trading según las necesidades del usuario.
-- Gestión de Riesgos: Incluye configuraciones para establecer niveles de stop-loss y take-profit.
-- Registro de Operaciones: Mantiene un registro detallado de todas las transacciones realizadas.
 
 ## Requisitos Previos
 
@@ -17,6 +15,8 @@ Antes de instalar y utilizar BSC Trader, asegúrate de tener lo siguiente:
 - Cuenta en BSC: Una dirección de billetera en la Binance Smart Chain con fondos suficientes en BNB para cubrir las transacciones.
 - Servicio de Blockchain: Un nodo rpc de la red de blockchain de Binance Smart Chain (BSC) para ejecutar transacciones.
 lo puedes obtener gratis en https://docs.bscscan.com/misc-tools-and-utilities/public-rpc-nodes.
+- Clave Privada: Una clave privada de la cuenta que se utilizará para enviar transacciones.
+
 
 
 ## Instalación
@@ -53,7 +53,10 @@ Sigue estos pasos para instalar y configurar BSC Trader:
 
    Nota: Nunca compartas tu clave privada. Asegúrate de que este archivo no se comparta públicamente.
 ```
-
+   - Si no tienes clave privada puedes generara con 
+``` bash 
+    npm generate-key
+```
 ## Uso
 
 Para iniciar el bot, ejecuta el siguiente comando:

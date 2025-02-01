@@ -5,7 +5,8 @@
   "scripts": {
 
     "start": "bun index.ts",
-    "dev": "npm run index.ts"
+    "dev": "npm run index.ts",
+    "generate-key": "npm run utils/generateWallet.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
