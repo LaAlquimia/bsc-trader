@@ -15,7 +15,9 @@ Antes de instalar y utilizar BSC Trader, asegúrate de tener lo siguiente:
 
 - Node.js: Versión 14 o superior. Puedes descargarlo desde https://nodejs.org/.
 - Cuenta en BSC: Una dirección de billetera en la Binance Smart Chain con fondos suficientes en BNB para cubrir las transacciones.
-- Clave API de BSCScan: Regístrate en https://bscscan.com/ y genera una clave API gratuita.
+- Servicio de Blockchain: Un nodo rpc de la red de blockchain de Binance Smart Chain (BSC) para ejecutar transacciones.
+lo puedes obtener gratis en https://docs.bscscan.com/misc-tools-and-utilities/public-rpc-nodes.
+
 
 ## Instalación
 
@@ -25,7 +27,8 @@ Sigue estos pasos para instalar y configurar BSC Trader:
     ``` bash
    git clone https://github.com/LaAlquimia/bsc-trader.git
 
-   cd bsc-trader ```
+   cd bsc-trader 
+   ```
 
 2. Instala las dependencias:
     ``` bash
@@ -36,11 +39,20 @@ Sigue estos pasos para instalar y configurar BSC Trader:
 
    - Copia el archivo .env.example y renómbralo a .env.
    - Abre el archivo .env y completa los siguientes campos:
-
-     PRIVATE_KEY=tu_clave_privada
-     BSC_API_KEY=tu_clave_api_de_bscscan
+``` python 
+    pk 
+    #  pk: La clave privada de la cuenta que se utilizará para enviar transacciones.
+    RPC_URL
+    #  RPC_URL: La URL de RPC de la red de blockchain de Binance Smart Chain.
+    REBALANCE_INTERVAL
+    #  REBALANCE_INTERVAL: El intervalo de tiempo en milisegundos entre rebalances.
+    TARGET_RATIO
+    #  TARGET_RATIO: La relación objetivo del pool.
+    BALANCING_UMBRAL
+    #  BALANCING_UMBRAL: El umbral de balanceo para realizar un rebalance.
 
    Nota: Nunca compartas tu clave privada. Asegúrate de que este archivo no se comparta públicamente.
+```
 
 ## Uso
 
@@ -60,17 +72,17 @@ Las contribuciones son bienvenidas. Si deseas mejorar BSC Trader, por favor, sig
 
 1. Haz un fork del repositorio.
 2. Crea una nueva rama:
-
+``` bash
    git checkout -b feature/nueva-funcionalidad
-
+```
 3. Realiza tus cambios y haz commit:
-
+``` bash
    git commit -am "Agrega nueva funcionalidad"
-
+```
 4. Envía tus cambios a tu repositorio fork:
-
+``` bash
    git push origin feature/nueva-funcionalidad
-
+```
 5. Abre un Pull Request en este repositorio.
 
 ## Licencia
